@@ -1,0 +1,46 @@
+<div class="col-12">
+    <h3>Componente utlizado apenas de exemplo.</h3>
+</div>
+
+<form (ngSubmit)="alert()">
+    <div class="form-group">
+        <input class="form-control" id="alertText" name="alertText" [(ngModel)]="alertText" type="text" placeholder="mensagem do alerta!">
+    </div>
+    <input class="btn btn-primary m-3" type="submit" >
+</form>
+
+<form ngNativeValidate (ngSubmit)="callApi()">
+    <div class="form-group">
+        <label for="exampleInputPassword1">ID do aluno</label>
+        <input type="text" placeholder="Digite 4" class="form-control" id="userId" name="userId" [(ngModel)]="userId"
+            pattern="[0-9]*" required>
+    </div>
+    <input class="btn btn-primary m-3" type="submit" value="Chamar API!">
+</form>
+<div class="col-12 ">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Indice da tabela</th>
+                <th scope="col">Id da prova</th>
+                <th scope="col">Id do usuário</th>
+                <th scope="col">Nota</th>
+                <th scope="col">Situação</th>
+                <th scope="col">Data de criação</th>
+                <th scope="col">Data de modificação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of resultList">
+                <td>{{item.nr_userevaluationid}}</td>
+                <td>{{item.nr_evaluationid}}</td>
+                <td>{{item.nr_userid}}</td>
+                <td>{{item.dr_grade}}</td>
+                <td>{{item.ds_hasdone? "Sim":"Não"}}</td>
+                <td>{{item.dt_creationdate}}</td>
+                <td>{{item.dt_modifieddate}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
