@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
-};
+  production: true};
+
+  export const baseURL = "https://servico-gama-ulife.herokuapp.com/api/"

@@ -1,0 +1,15 @@
+<div class="container">
+
+<h1>Grade Update</h1>
+<hr>
+<form>
+    <div class="form-group">
+    <p>UserId<input type="text" [(ngModel)]="gradeupdate.nr_userid" name="userid"  class="form-control"></p>
+    <p>UserEvaluationId<input type="text" [(ngModel)]="gradeupdate.nr_userevaluationid" name="userevaluationid" class="form-control"></p>
+    <p>EvaluationId<input type="text"  [(ngModel)]="gradeupdate.nr_evaluationid" name="evaluationid" class="form-control"></p>
+    <p>Grade<input type="text"  [(ngModel)]="gradeupdate.dr_grade" name="grade" class="form-control"></p>
+    <!-- Professor não precisa atualizar hasdone: <p>HasDone<input type="text"  [(ngModel)]="gradeupdate.ds_hasdone" name="hasdone"></p> -->
+    <button type="button" (click)="update()" class="btn btn-primary">Atualizar</button>
+    </div>
+</form>
+</div>
