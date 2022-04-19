@@ -1,4 +1,4 @@
-export class GradeUpdateModel{
+export class UserEvaluationModel{
     nr_userevaluationid?: number;
     nr_userid?: number;
     nr_evaluationid?: number;

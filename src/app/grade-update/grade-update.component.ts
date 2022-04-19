@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GradeUpdateModel } from '../models/gradeupdate.model';
+import { UserEvaluationModel } from '../models/userevaluation.model';
+import { UserModel } from '../models/user.model';
 import { GradeUpdateService } from '../services/http/grade-update-service/grade-update.service';
 
 @Component({
@@ -9,17 +10,52 @@ import { GradeUpdateService } from '../services/http/grade-update-service/grade-
 })
 export class GradeUpdateComponent implements OnInit {
 
-  gradeupdate: GradeUpdateModel = new GradeUpdateModel();
-  gradeupdates: Array<any> = new Array();
+  userevaluation: UserEvaluationModel = new UserEvaluationModel();
+  userevaluations: Array<any> = new Array();
+
+  user: UserModel = new UserModel();
+  users: Array<any> = new Array();
+
+  selectedOption?: string;
+  printedOption?: string;
+  
+
   constructor(private gradeUpdateService : GradeUpdateService) { }
 
   ngOnInit(){
+    this.listUserEvaluation()
+    this.listUser();
   }
 
-  update(){
-    this.gradeUpdateService.updateGrade(this.gradeupdate).subscribe(gradeupdate => {
-      this.gradeupdate = new GradeUpdateModel();
+  updateEvaluation(){
+    this.gradeUpdateService.updateevaluation(this.userevaluation).subscribe(userevaluation => {
+      this.userevaluation = new UserEvaluationModel();
     }, err => (console.log('Erro ao atualizar', err)))
-      }
+  }
 
-}
+  listUserEvaluation(){
+      this.gradeUpdateService.listuserevaluation().subscribe(userevaluations => {
+      this.userevaluations = userevaluations;
+      },
+      err => (console.log('Erro ao listar', err)))
+    }
+
+  listUser(){
+      this.gradeUpdateService.listuser().subscribe(users => {
+      this.users = users;
+      },
+      err => (console.log('Erro ao listar', err)))
+    }
+
+    print() {
+      this.printedOption = this.selectedOption;
+      this.user.nr_user == this.selectedOption
+      console.log("My input: ", this.user);
+    }
+  //  listUser(){
+  //     this.gradeUpdateService.listGrade().subscribe(userevaluations => {
+  //     this.userevaluations = userevaluations;
+  //     },
+  //     err => (console.log('Erro ao atualizar', err)))
+  //   }
+  }
