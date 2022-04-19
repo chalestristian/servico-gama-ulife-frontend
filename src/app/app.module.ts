@@ -12,6 +12,8 @@ import { DatePipe } from '@angular/common';
 import { GradeUpdateComponent } from './grade-update/grade-update.component';
 import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
+import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     GradeUpdateComponent,
     HeaderComponent,
     NavBarComponent,
+    StudentNoticeBoardComponent,
+    ProfessorNoticeBoardComponent,
   ],
   imports: [
     BrowserModule,

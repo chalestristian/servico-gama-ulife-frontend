@@ -4,6 +4,8 @@ import { ExampleComponent } from './example/example.component';
 import { GradeUpdateComponent } from './grade-update/grade-update.component';
 import { GuardConfigGuard } from './guard/guard-config.guard';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
+import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
 
 const routes: Routes = [
   {
@@ -14,6 +16,12 @@ const routes: Routes = [
   },
   {
     path: "navbar", component: NavBarComponent, canActivate:[GuardConfigGuard]
+  },
+  {
+    path: "studentboard", component: StudentNoticeBoardComponent, canActivate:[GuardConfigGuard]
+  },
+  {
+    path: "professorboard", component: ProfessorNoticeBoardComponent, canActivate:[GuardConfigGuard]
   },
 ];
 
