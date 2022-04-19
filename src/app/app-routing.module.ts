@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CalendarComponent } from './calendar/calendar.component';
 import { ExampleComponent } from './example/example.component';
 import { GradeUpdateComponent } from './grade-update/grade-update.component';
 import { GuardConfigGuard } from './guard/guard-config.guard';
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: "professorboard", component: ProfessorNoticeBoardComponent, canActivate:[GuardConfigGuard]
+  },
+  {
+    path: "calendar", component: CalendarComponent, canActivate:[GuardConfigGuard]
   },
 ];
 

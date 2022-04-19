@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
 import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfessorNoticeBoardComponent } from './professor-notice-board/professo
     NavBarComponent,
     StudentNoticeBoardComponent,
     ProfessorNoticeBoardComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
