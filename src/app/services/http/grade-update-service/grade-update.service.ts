@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GradeUpdateModel } from 'src/app/models/gradeupdate.model';
+import { UserEvaluationModel } from 'src/app/models/userevaluation.model';
 import { baseURL} from 'src/environments/environment';
 
 @Injectable({
@@ -11,7 +11,23 @@ export class GradeUpdateService {
 
   constructor(private http: HttpClient) { }
 
-updateGrade(grade: GradeUpdateModel): Observable<any>{
+updateevaluation(grade: UserEvaluationModel): Observable<any>{
+console.log(grade)
  return this.http.put(`${baseURL}UserEvaluation/PutUserEvaluation/`, grade)
+ 
 }
+
+listuserevaluation(): Observable<any>{
+  return this.http.get(`${baseURL}UserEvaluation/GetAllUserEvaluation`)
+}
+
+listuser(): Observable<any>{
+  return this.http.get(`${baseURL}user/`)
+}
+
+
+
+
+
+
 }

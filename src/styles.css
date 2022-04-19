@@ -1,1 +1,25 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Import Google Fonts */
+/* Title */@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+/* Body */@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+/* Default colors */
+:root{
+    --color-bg-body: rgb(245, 245, 245);    
+    --color-title: rgb(54, 54, 54); 
+    --color-text:rgb(86, 86, 86);
+} 
+   
+body{
+    background-color: var(--color-bg-body);
+}
+
+h1,h2,h3,h4,h5,h6{  
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-title);
+}
+
+p, label, table, th, td, tr{font-family: 'Nunito', sans-serif;
+    color: var(--color-text);
+}

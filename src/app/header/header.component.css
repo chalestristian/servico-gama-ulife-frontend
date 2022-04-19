@@ -1,0 +1,22 @@
+header{
+    border: 1px solid red;
+}
+
+ 
+ul{
+    list-style: none;
+}
+li{
+    display: inline;
+}
+
+
+
+li{
+    border: 1px solid green;
+
+}
+a{
+    border: 1px solid yellow;
+
+}
