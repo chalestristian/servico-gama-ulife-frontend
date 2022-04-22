@@ -16,6 +16,15 @@ import { StudentNoticeBoardComponent } from './student-notice-board/student-noti
 import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-nav-bar.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentEditComponent } from './student-edit/student-edit.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +37,9 @@ import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-
     ProfessorNoticeBoardComponent,
     CalendarComponent,
     ProfessorNavBarComponent,
+    StudentListComponent,
+    StudentEditComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -35,6 +47,9 @@ import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000, // 3 segundos
       closeButton: true,
@@ -43,7 +58,8 @@ import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-
   ],
   providers: [
     CookieService,
-    DatePipe
+    DatePipe,
+    
   ],
   bootstrap: [AppComponent]
 })

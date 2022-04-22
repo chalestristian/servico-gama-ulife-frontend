@@ -13,8 +13,7 @@ export class GradeUpdateService {
 
 updateevaluation(grade: UserEvaluationModel): Observable<any>{
 console.log(grade)
- return this.http.put(`${baseURL}UserEvaluation/PutUserEvaluation/`, grade)
- 
+ return this.http.put(`${baseURL}UserEvaluation/PutUserEvaluation/`, grade) 
 }
 
 listuserevaluation(): Observable<any>{

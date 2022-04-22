@@ -1,0 +1,11 @@
+div{
+margin: 0 auto;
+text-align: center;
+}
+section{
+    padding: 20px;
+    border: 1px solid gray;
+}
+p {
+    font-family: Lato;
+  }
