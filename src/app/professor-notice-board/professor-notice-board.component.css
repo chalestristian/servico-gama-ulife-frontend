@@ -6,7 +6,7 @@
 }
 
 .material-icons{
-    color: #565656;
+    color: #0076ebb1;
     top: 5px;
     position: relative;
     width: 30px;
@@ -14,8 +14,9 @@
 }
 
 h1{
-   color: #565656;
-   display: inline;
+    font-size: 20px;
+    color: #0076ebfe;
+    display: inline;
 }
 
 section{
@@ -23,7 +24,7 @@ section{
     min-width: 600px;
     max-width: 50%;
     border-radius: 20px;
-    background-color: #E6E6E6;
+    background-color: #0075eb27;
 }
 
 #avisos{
@@ -34,7 +35,7 @@ section{
     display: inline-block;
     border-radius: 50px;
     padding: 10px;
-    background-color: #D2D2D2;
+    background-color: #0076eb0e;
 
 }
 .material-positions{
