@@ -1,36 +1,33 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CalendarComponent } from './calendar/calendar.component';
-import { ExampleComponent } from './example/example.component';
-import { GradeUpdateComponent } from './grade-update/grade-update.component';
+import { RouterModule, Routes } from '@angular/router'; 
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { GradeComponent } from './grade/grade.component';
 import { GuardConfigGuard } from './guard/guard-config.guard';
-import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-nav-bar.component';
-import { StudentNavBarComponent } from './nav-bar/student-nav-bar/student-nav-bar.component';
-import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
-import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
+import { LoginComponent } from './login/login.component'; 
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
 
 const routes: Routes = [
   {
-    path: "", component: ExampleComponent, canActivate:[GuardConfigGuard]
+    path: "", component: LoginComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "gradeupdate", component: GradeUpdateComponent, canActivate:[GuardConfigGuard]
+    path: "aluno", component: StudentComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "studentnavbar", component: StudentNavBarComponent, canActivate:[GuardConfigGuard]
+    path: "aluno/Provas", component: EvaluationComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "professornavbar", component: ProfessorNavBarComponent, canActivate:[GuardConfigGuard]
+    path: "aluno/provas/questionario", component: QuestionnaireComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "studentboard", component: StudentNoticeBoardComponent, canActivate:[GuardConfigGuard]
+    path: "aluno/Notas", component: GradeComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "professorboard", component: ProfessorNoticeBoardComponent, canActivate:[GuardConfigGuard]
+    path: "professor", component: TeacherComponent, canActivate:[GuardConfigGuard]
   },
-  {
-    path: "calendar", component: CalendarComponent, canActivate:[GuardConfigGuard]
-  },
+
 ];
 
 @NgModule({

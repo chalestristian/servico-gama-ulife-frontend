@@ -9,25 +9,35 @@ import { ExampleComponent } from './example/example.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { GradeUpdateComponent } from './grade-update/grade-update.component';
-import { HeaderComponent } from './header/header.component';
-import { StudentNavBarComponent } from './nav-bar/student-nav-bar/student-nav-bar.component';
+import { GradeUpdateComponent } from './grade-update/grade-update.component'; 
 import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
 import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-nav-bar.component';
-
+import { CalendarComponent } from './calendar/calendar.component'; 
+import { LoginComponent } from './login/login.component';
+import { StudentComponent } from './student/student.component';
+import {MaterialModule} from './MaterialModule';
+import { TeacherComponent } from './teacher/teacher.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { GradeComponent } from './grade/grade.component';
+import { MobileComponent } from './nav-bar/mobile/mobile.component';
+import { DesktopComponent } from './nav-bar/desktop/desktop.component';
 @NgModule({
   declarations: [
     AppComponent,
     ExampleComponent,
-    GradeUpdateComponent,
-    HeaderComponent,
-    StudentNavBarComponent,
+    GradeUpdateComponent, 
     StudentNoticeBoardComponent,
     ProfessorNoticeBoardComponent,
-    CalendarComponent,
-    ProfessorNavBarComponent,
+    CalendarComponent, 
+    LoginComponent,
+    StudentComponent,
+    TeacherComponent,
+    EvaluationComponent,
+    QuestionnaireComponent,
+    GradeComponent,
+    MobileComponent,
+    DesktopComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,8 @@ import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-
       timeOut: 3000, // 3 segundos
       closeButton: true,
       progressBar: true,
-    })
+    }),
+    MaterialModule
   ],
   providers: [
     CookieService,

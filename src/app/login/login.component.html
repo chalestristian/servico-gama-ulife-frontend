@@ -1,0 +1,34 @@
+<div class="base fadeInDown"> 
+    <div id="content" class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-5 pt-5">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <h1 id="title" class="title p-5">Ê-Study</h1>
+            <hr>
+        </div>
+        <!-- Login Form -->
+        <form ngNativeValidate class="col-12 pb-5" (ngSubmit)="submit()"> 
+            <div class="row pb-5">
+                <div class="form-group">
+                    <input type="email" id="email" class="form-control form-control-lg fadeIn second" name="email"
+                        placeholder="Email" [(ngModel)]="email" required>
+                </div>
+            </div>
+            <div class="row pb-5">
+                <div class="form-group">
+                    <input type="password" id="password" class="form-control form-control-lg fadeIn third"
+                        name="password" placeholder="Senha" [(ngModel)]="password" required>
+                </div>
+            </div>
+            <div class="row loginBtn">
+                <button type="submit" class="btn btn-primary btn-lg fadeIn fourth ">
+                    <span *ngIf="!loading">Log In</span>
+                    <div *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </div>
+                </button>
+            </div>
+        </form>  
+    </div>
+</div>

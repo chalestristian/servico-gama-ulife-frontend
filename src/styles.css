@@ -23,3 +23,17 @@ h1,h2,h3,h4,h5,h6{
 p, label, table, th, td, tr{font-family: 'Nunito', sans-serif;
     color: var(--color-text);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+ 
+.container-body {
+    height: calc(100vh - 300px);
+    background-color: white;
+    border-radius: 5px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.active {
+    text-decoration: underline;
+    color: white; 
+}

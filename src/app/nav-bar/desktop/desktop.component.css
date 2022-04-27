@@ -1,0 +1,135 @@
+
+/* Estudent Profile */
+.profile-bar {
+    transition: box-shadow .3s;
+    /* background-image: url(''); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    max-height: 100%;
+    max-width: 100%;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 5px;
+}
+
+.profile-bar .buttons {
+    border: 0px 1px solid #ccc;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.profile-bar:hover .contents {
+    transition: box-shadow .5s;
+    box-shadow: 0 0 15px rgba(33, 33, 33, .4);
+    transform: scale(1);
+    border-radius: 5px;
+    border: 1px 1px solid #ccc;
+}
+
+.profile-bar .contents img {
+    display: block;
+    width: 70px;
+    margin: auto;
+    padding-top: 25px;
+}
+
+.profile-bar .contents .profile-name {
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.profile-bar .contents .profile-description {
+    text-align: center;
+    margin: 10px 0px;
+    font-weight: 600;
+}
+
+.profile-bar .contents .buttons {
+    text-align: center;
+    background-color: #055160;
+}
+
+.profile-bar .contents .buttons ul {
+    list-style: none;
+    -webkit-padding-start: 0;
+}
+
+.profile-bar .contents .buttons ul li {
+    display: inline-block;
+    margin: 15px 20px;
+}
+
+.profile-bar .contents .buttons ul li a {
+    display: block;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: 0.2s all linear;
+    color: #ffffff;
+}
+
+.profile-bar .contents .buttons ul li a:hover {
+    opacity: 1;
+    transition: 0.2s all linear;
+    color: #aaaaaa;
+    text-decoration: underline;
+}
+
+.profile-bar .contents .buttons ul li a span {
+    font-size: 1rem;
+    display: block;
+}
+ 
+/** End Profile **/
+
+/** Content */
+.flex-fill {
+    flex: 1 1 auto;
+    background-color: white;
+}
+
+/** Footer **/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+.container-body {
+    height: calc(100vh - 300px);
+    background-color: white;
+    border-radius: 5px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+li{
+    font-size: 1rem;
+}
+
+li:hover{
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}

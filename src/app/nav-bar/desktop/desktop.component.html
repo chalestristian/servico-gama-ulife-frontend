@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-12">
+        <div class="profile-bar">
+            <div class="contents">
+                <p class="profile-name p-5">Bem Vindo</p>
+                <p class="profile-description"></p>
+                <div class="buttons">
+                    <ul>
+                        <li *ngFor="let item of nav" (click)="Rota(item['route'])">
+                           <span [ngClass]="{'active': selected == item['display']}"> {{item['display']}} </span> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

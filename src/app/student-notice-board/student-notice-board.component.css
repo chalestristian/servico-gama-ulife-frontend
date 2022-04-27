@@ -18,25 +18,21 @@ h1{
    display: inline;
 }
 
-section{
-    padding: 10px;
-    min-width: 600px;
-    max-width: 50%;
-    border-radius: 20px;
+section{ 
     background-color: #E6E6E6;
 }
 
 #avisos{
     padding-left: 50px;
-}
+} 
 
 .text{
     display: inline-block;
     border-radius: 50px;
     padding: 10px;
     background-color: #D2D2D2;
-
 }
+
 .material-positions{
     top: 45px;
     left: -30px;
