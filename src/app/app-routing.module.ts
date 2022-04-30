@@ -4,8 +4,10 @@ import { EvaluationComponent } from './evaluation/evaluation.component';
 import { GradeComponent } from './grade/grade.component';
 import { GuardConfigGuard } from './guard/guard-config.guard';
 import { LoginComponent } from './login/login.component'; 
+import { NotFoundComponent } from './not-found/not-found.component'; 
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { StudentComponent } from './student/student.component';
+import { TeacherStudentsComponent } from './teacher-students/teacher-students.component';
 import { TeacherComponent } from './teacher/teacher.component';
 
 const routes: Routes = [
@@ -16,16 +18,22 @@ const routes: Routes = [
     path: "aluno", component: StudentComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "aluno/Provas", component: EvaluationComponent, canActivate:[GuardConfigGuard]
+    path: "aluno/provas", component: EvaluationComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "aluno/provas/questionario", component: QuestionnaireComponent, canActivate:[GuardConfigGuard]
+    path: "aluno/provas/prova", component: QuestionnaireComponent, canActivate:[GuardConfigGuard]
   },
   {
-    path: "aluno/Notas", component: GradeComponent, canActivate:[GuardConfigGuard]
+    path: "aluno/notas", component: GradeComponent, canActivate:[GuardConfigGuard]
   },
   {
     path: "professor", component: TeacherComponent, canActivate:[GuardConfigGuard]
+  },
+  {
+    path: "professor/alunos", component: TeacherStudentsComponent, canActivate:[GuardConfigGuard]
+  },
+  {
+    path: "**", component: NotFoundComponent, canActivate:[GuardConfigGuard]
   },
 
 ];

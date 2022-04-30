@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cookieService.deleteAll();
+    this.clearCookie();
   }
 
   loading: boolean = false;
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   async submit() {
     
     this.cookieTest();
-    this.router.navigate(['aluno'])
+    this.router.navigate(['aluno']);
 /*     let data = {
       user: this.email,
       password: this.password
@@ -46,11 +46,17 @@ export class LoginComponent implements OnInit {
       );
  */
   }
+
+  clearCookie(){
+    this.cookieService.deleteAll();
+  }
+
+  // TODO: Remover, utilizado para testes.
   cookieTest(){
     this.cookieService.set('logged','true', { expires: 1 });
-    this.cookieService.set("token", 'data.token', { expires: 1 });
-    this.cookieService.set("name", 'data.name', { expires: 1 });
-    this.cookieService.set("role", 'data.role', { expires: 1 });
+    this.cookieService.set("token", '123123123', { expires: 1 });
+    this.cookieService.set("name", 'Victor A. Lanni', { expires: 1 });
+    this.cookieService.set("role", 'aluno', { expires: 1 });
   }
 
   cookie(data : auth){
@@ -59,6 +65,7 @@ export class LoginComponent implements OnInit {
     this.cookieService.set("name", data.name, { expires: 1 });
     this.cookieService.set("role", data.role.toString(), { expires: 1 });
   }
+
   verifyLogin(data: auth) {
     this.cookie(data);
     this.loading = false;  

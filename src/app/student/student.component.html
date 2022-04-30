@@ -1,5 +1,12 @@
-<div class="container fh">
-    <app-desktop [selected]="selected"></app-desktop>
-    <div class="container-body p-3">  
+<div class="container">
+    <app-desktop [selected]="selected" [disabled]="false"></app-desktop> 
+    <div class="row content-body">  
+        <div class="col-sm-12 col-md-6 p-1">
+            <app-notice-board></app-notice-board>
+        </div>
+        <div class="col-sm-12 col-md-6 p-1">
+            <app-calendar></app-calendar>
+        </div> 
     </div>
 </div>
+<app-footer></app-footer>

@@ -1,0 +1,59 @@
+<div class="container">
+    <app-desktop [selected]="selected" [disabled]="disabled"></app-desktop>
+    <div class="row content-body" style="text-align: left;">
+        <div *ngIf="!loadding"class="col-sm-12 col-md-12 p-1 ">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div  *ngIf="loadding" class="col-sm-12 col-md-12 p-1" >
+            <div class="border rounded questionnaire  bg-white">
+                <div class="title" *ngIf="questionnaire['nm_questionnaire'] != null">
+                    Prova: {{questionnaire["nm_questionnaire"]}}
+                </div>
+                <form (ngSubmit)="submitForm()" #form="ngForm" class="qf">
+                    <mat-tab-group mat-align-tabs="center" style="min-height: 250px; max-height: 400px; overflow: auto;">
+                        <div *ngFor="let item of questionList; let i = index" class="question border rounded">
+                            <mat-tab [label]="'Questão ' + (i + 1).toString()">
+                                <mat-card>
+                                    <mat-card-title class="title">
+                                        {{item["ds_question"]}}
+                                    </mat-card-title>
+                                    <mat-card-content>
+                                        <div *ngFor="let alternatives of item['alternatives'];" class="options">
+                                            <div class="form-check">
+                                                <label
+                                                    [ngClass]="{'active': answers[i] == alternatives['nr_alternativesid']}"
+                                                    class="form-check-label w-100 label"
+                                                    [attr.for]="alternatives['nr_alternativesid']" [id]="i">
+                                                    <input class="form-check-input m-1 p-1" type="radio"
+                                                        [name]="'form'+i" [id]="alternatives['nr_alternativesid']"
+                                                        [value]="alternatives['nr_alternativesid']"
+                                                        [(ngModel)]="answers[i]" required>
+                                                    {{alternatives['ds_alternatives']}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                            </mat-tab>
+                        </div>
+                    </mat-tab-group>
+                    <div class="col-12 buttons">
+                        <!-- <input type="button" (click)="back()" class="btn btn-danger m-1" value="Voltar" /> -->
+                        <button  *ngIf="!sendLoadding" type="submit" [disabled]="!form.form.valid" class="btn btn-success m-1 sendButton" value="Enviar"  
+                            mat-raised-button
+                            matTooltip="Necessário responder todas as questões para habilitar o envio."
+                            [matTooltipDisabled]="form.valid">
+                            <span class="material-icons">done</span>
+                            Enviar  
+                        </button>  
+                        <button  *ngIf="sendLoadding" type="button" [disabled]="!form.form.valid" class="btn btn-success m-1 sendButton" value="loading">
+                            <span class="spinner-border spinner-border-sm m-1" role="status" aria-hidden="true"></span>
+                            Enviando...
+                        </button>   
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

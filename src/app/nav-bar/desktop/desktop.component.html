@@ -1,12 +1,16 @@
 <div class="row">
-    <div class="col-12">
-        <div class="profile-bar">
+    <div class="col-12 p-0">
+        <div class="profile-bar cardHover">
             <div class="contents">
-                <p class="profile-name p-5">Bem Vindo</p>
-                <p class="profile-description"></p>
+                <p class="profile-name p-5"> 
+                    Ê-Study
+                </p>  
+                <p class="profile-description">
+                    <app-timer></app-timer>
+                </p>
                 <div class="buttons">
                     <ul>
-                        <li *ngFor="let item of nav" (click)="Rota(item['route'])">
+                        <li *ngFor="let item of itens" (click)="Rota(item['route'])" >
                            <span [ngClass]="{'active': selected == item['display']}"> {{item['display']}} </span> 
                         </li>
                     </ul>

@@ -1,0 +1,44 @@
+.container-card {  
+    display: grid;
+    grid-template-rows: 1.5fr 0.5fr;
+    grid-auto-columns: 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    justify-content: stretch;
+    align-content: stretch;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+  
+  .nm_questionnaire { grid-area: 1 / 1 / 2 / 2; }
+  
+  .nm_user {
+    align-self: end;
+    grid-area: 2 / 1 / 3 / 2;
+  } 
+ 
+
+  /* Styles for wrapping the search box */
+
+.main {
+  width: 50%;
+  margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}

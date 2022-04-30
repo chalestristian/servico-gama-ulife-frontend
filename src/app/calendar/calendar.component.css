@@ -1,5 +1,4 @@
-*{
-    margin: 0 auto;
+*{  
     padding: 0;
     font-family: 'Mitr', sans-serif;
     color: #565656;
@@ -18,26 +17,15 @@ h1{
 }
 .feriado{
     color: #214EEE;
-}
-section{
-    margin: 0 auto;
-    min-width: 600px;
-    max-width: 20%;
-    background-color: #E6E6E6;
-    padding: 20px;
-    border-radius: 20px;
-}
+} 
 
 table{
     margin: 0 auto;
     text-align: center;
 }
 th{
-    width: 10%;
-    padding: 0 10px;
-}
-tr{
-}
+    width: 5%; 
+} 
 td{
         padding: 10px;
 }

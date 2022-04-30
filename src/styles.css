@@ -27,13 +27,47 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  
 .container-body {
-    height: calc(100vh - 300px);
+    min-height: calc(100vh - 300px);
     background-color: white;
     border-radius: 5px;
     overflow: auto;
     overflow-x: hidden;
 }
+
+.cardHover:hover {
+    transition: box-shadow .5s;
+    box-shadow: 0 0 15px rgba(33, 33, 33, .4);
+    transform: scale(1);
+    border-radius: 5px;
+    border: 1px 1px solid #ccc; 
+}
 .active {
     text-decoration: underline;
     color: white; 
 }
+
+
+/** Content */
+.flex-fill {
+    flex: 1 1 auto;
+    background-color: white;
+} 
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.content-body{
+    text-align: -webkit-center; 
+    padding-bottom: 50px;
+ }

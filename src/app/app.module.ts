@@ -10,8 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { GradeUpdateComponent } from './grade-update/grade-update.component'; 
-import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
-import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
+import { NoticeBoardComponent } from './notice-board/notice-board.component';
 import { CalendarComponent } from './calendar/calendar.component'; 
 import { LoginComponent } from './login/login.component';
 import { StudentComponent } from './student/student.component';
@@ -22,13 +21,16 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import { GradeComponent } from './grade/grade.component';
 import { MobileComponent } from './nav-bar/mobile/mobile.component';
 import { DesktopComponent } from './nav-bar/desktop/desktop.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './footer/footer.component';
+import { TimerComponent } from './timer/timer.component';
+import { TeacherStudentsComponent } from './teacher-students/teacher-students.component';
 @NgModule({
   declarations: [
     AppComponent,
     ExampleComponent,
     GradeUpdateComponent, 
-    StudentNoticeBoardComponent,
-    ProfessorNoticeBoardComponent,
+    NoticeBoardComponent,
     CalendarComponent, 
     LoginComponent,
     StudentComponent,
@@ -38,6 +40,10 @@ import { DesktopComponent } from './nav-bar/desktop/desktop.component';
     GradeComponent,
     MobileComponent,
     DesktopComponent,
+    NotFoundComponent,
+    FooterComponent,
+    TimerComponent,
+    TeacherStudentsComponent,
   ],
   imports: [
     BrowserModule,
