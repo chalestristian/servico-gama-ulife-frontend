@@ -1,0 +1,14 @@
+<div class="card cardHover border rounded-3 p-3" >
+    <div>
+        <li><span class="material-icons">warning</span><h1>Avisos</h1></li>
+    </div> 
+    <div id="avisos">
+        <hr >
+        <ul class="border heightBase">  
+            <li class="container" *ngFor="let item of message" >
+                <div class="Icon material-icons">{{item["icon"]}}</div>
+                <div class="Text" style="text-align: -webkit-left;">{{item["text"]}}</div>
+            </li>
+        </ul> 
+    </div>
+</div>
