@@ -14,6 +14,7 @@ const routes: Routes = [
   {
     path: "", component: LoginComponent, canActivate:[GuardConfigGuard]
   },
+
   {
     path: "aluno", component: StudentComponent, canActivate:[GuardConfigGuard]
   },

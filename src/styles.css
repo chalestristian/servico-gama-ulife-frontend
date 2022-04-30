@@ -6,7 +6,7 @@
 
 /* Default colors */
 :root{
-    --color-bg-body: rgb(245, 245, 245);    
+    --color-bg-body: #ffffff;    
     --color-title: rgb(54, 54, 54); 
     --color-text:rgb(86, 86, 86);
 } 
@@ -67,7 +67,3 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-.content-body{
-    text-align: -webkit-center; 
-    padding-bottom: 50px;
- }

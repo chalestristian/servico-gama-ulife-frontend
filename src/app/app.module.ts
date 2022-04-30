@@ -60,7 +60,8 @@ import { TeacherStudentsComponent } from './teacher-students/teacher-students.co
   ],
   providers: [
     CookieService,
-    DatePipe
+    DatePipe,
+    
   ],
   bootstrap: [AppComponent]
 })
