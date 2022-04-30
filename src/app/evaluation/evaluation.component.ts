@@ -10,11 +10,12 @@ import { HttpClientService } from '../services/http/http-client.service';
 export class EvaluationComponent implements OnInit {
 
   sort: boolean = false;
-  lista: any = [];
+  list: any = [];
   listBackup: any = [];
   filterField: string = "";
   selected: string = "Provas";
   orderBy: string = "---";
+  loadding: boolean = true;
 
   constructor(
     private router: Router,
@@ -27,43 +28,43 @@ export class EvaluationComponent implements OnInit {
   callApi() {
     this.httpService.get<any[]>("Evaluation/GetEvaluationByUserId/4")
       .subscribe({
-        error: (e) => { console.log(e); },
-        next: (e) => { this.lista = e; this.listBackup = e; console.log(e); }
+        error: (e) => { this.loadding = false; },
+        next: (e) => { this.list = e; this.listBackup = e; this.loadding = false; }
       }
       );
+
   }
 
   route(value: any) {
-    console.log(value);
     this.router.navigate(["aluno/provas/prova/"], { queryParams: { id: value } });
   }
 
   filter(value: any) {
-    this.orderBy = value; 
-      this.lista = this.listBackup; 
-      this.sort = false;
-      this.filterField ="";
+    this.orderBy = value;
+    this.list = this.listBackup;
+    this.sort = false;
+    this.filterField = "";
   }
 
-  search(value : string){ 
-    if(value != ""){
-      this.lista = this.listBackup.filter((p: any) => p[this.orderBy].toLowerCase().includes(value.toLowerCase()));
-    }else{
-      this.lista = this.listBackup;
+  search(value: string) {
+    if (value != "") {
+      this.list = this.listBackup.filter((p: any) => p[this.orderBy].toLowerCase().includes(value.toLowerCase()));
+    } else {
+      this.list = this.listBackup;
     }
   }
 
-  order() { 
+  order() {
     if (this.orderBy != "---") {
-       if (this.sort) {
-        this.lista.sort((a: any, b: any) => a[this.orderBy].localeCompare(b[this.orderBy]));
+      if (this.sort) {
+        this.list.sort((a: any, b: any) => a[this.orderBy].localeCompare(b[this.orderBy]));
         this.sort = false;
       } else {
-        this.lista.sort((a: any, b: any) => b[this.orderBy].localeCompare(a[this.orderBy]));
+        this.list.sort((a: any, b: any) => b[this.orderBy].localeCompare(a[this.orderBy]));
         this.sort = true;
       }
-    }else{
-      this.lista = this.listBackup;
+    } else {
+      this.list = this.listBackup;
     }
   }
 }

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core'; 
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClientService } from '../services/http/http-client.service'; 
+import { HttpClientService } from '../services/http/http-client.service';
 
 @Component({
   selector: 'app-questionnaire',
@@ -8,23 +8,22 @@ import { HttpClientService } from '../services/http/http-client.service';
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent implements OnInit {
-
-  
-  //@Input()
+ 
   customTitle: string = "4";
 
   constructor(
     private httpService: HttpClientService,
-    private router: Router, 
-    ) { }
- 
-  ngOnInit(): void {  
+    private router: Router,
+  ) { }
+
+  ngOnInit(): void {
     this.customTitle = this.router.parseUrl(this.router.url).queryParams['id'];
-    this.callApi();  
+    this.callApi();
   }
-  questionList: any = []; 
-  questionnaire: any; 
-  answers: any = {};
+  
+  questionList: any = [];
+  questionnaire: any;
+  answers: any = [];
   selected: string = "Provas";
   loadding: boolean = false;
   sendLoadding: boolean = false;
@@ -34,29 +33,35 @@ export class QuestionnaireComponent implements OnInit {
     this.httpService.get<any[]>("Questionnaire/" + this.customTitle)
       .subscribe({
         error: (e) => { this.handlerError(e) },
-        next: (e) => { this.questionnaire = e;}
+        next: (e) => { this.questionnaire = e; }
       }
       );
     this.httpService.get<any[]>("Questionnaire/" + this.customTitle + "/QuestionList")
       .subscribe({
         error: (e) => { this.handlerError(e) },
-        next: (e) => {  this.questionList = e; this.loadding = true; }
+        next: (e) => { this.questionList = e; this.loadding = true; }
       }
       );
-    } 
-  submitForm(){  
-    this.sendLoadding = true;
-    this.disabled = false;  
-    setTimeout(()=>{
-      console.log(this.answers);  
-      this.back();
-    }, 5000);
   }
- 
+
+  submitForm() {
+    this.httpService.post<any[]>({ Answers: this.answers }, "Evaluation/4/"+this.customTitle)
+      .subscribe({
+        error: (e) => { this.handlerError(e) },
+        next: (e) => { 
+          this.back();
+        }
+      }
+      );
+    this.sendLoadding = true;
+    this.disabled = false;
+    
+  }
+
   handlerError(e: any) {
-    console.log(e);
-  } 
-  back(){ 
+    // TODO: Verificar.
+  }
+  back() {
     this.router.navigate(["aluno/provas"]);
   }
 }

@@ -32,8 +32,7 @@ export class ExampleComponent implements OnInit {
 
   userId: any;
   // chamando api.
-  callApi(){ 
-    console.log(this.userId)
+  callApi(){
     this.httpService.get<exemplo[]>("UserEvaluation/GetUserEvaluationByUser/"+this.userId+"?typeUser=1")
     .subscribe({
       error: (e) => { this.handlerError(e) },
@@ -58,13 +57,11 @@ export class ExampleComponent implements OnInit {
   }
   
   // tratando retorno negativo.
-  handlerError(e: any){ 
-    console.log(e);
+  handlerError(e: any){
     this.toastService.error(e["message"]);
   }
 
-  transformDate(date: string | null) { 
-    console.log(date)
+  transformDate(date: string | null) {
     if(date != "0001-01-01T00:00:00"){
       return this.datePipe.transform(date, 'dd-MM-YYYY - HH:mm:ss'); 
     } else{

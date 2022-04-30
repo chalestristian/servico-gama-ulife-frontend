@@ -31,8 +31,11 @@
                         </div>
                 </div>
                 <hr>
-                <div class="row mb-5">
-                        <div *ngFor="let item of lista" class="col-12 col-sm-6 col-md-3 p-1 cardHover ">
+                <div *ngIf="loadding" class="col-sm-12 col-md-12 p-1 ">
+                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </div>
+                <div class="row mb-5" style="padding-bottom: 50px;">
+                        <div *ngFor="let item of list" class="col-12 col-sm-6 col-md-3 p-1 cardHover ">
                                 <div class="card border rounded-3 bg-white" style="height: 300px;">
                                         <div class="card-header bg-white">
                                                 <h4 class="card-title fw-bold">{{item["nm_evaluation"]}} </h4>
@@ -53,7 +56,7 @@
                                         </div>
                                         <div class="card-footer text-end bg-white">
                                                 <button *ngIf="!item['hasDone']" class="btn btn-success"
-                                                        (click)="route(item['nr_questionnaireid'])">Iniciar
+                                                        (click)="route(item['nr_userevaluationid'])">Iniciar
                                                         Prova</button>
                                                 <span *ngIf="item['hasDone']" class="btn disabled fw-bold">Nota:
                                                         {{item['grade']}}</span>
