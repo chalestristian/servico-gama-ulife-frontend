@@ -1,3 +1,18 @@
-*{
-    background-color: red;
+
+.modal-body {
+    height: 70vh;
+}
+tr{
+    text-align: center;
+    margin:  0 auto;
+}
+td{
+    padding: 0 20px;
+}
+.update, .cancel{
+    margin-bottom: 26px;
+}
+
+.noyet{
+    color: red;
 }

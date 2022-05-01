@@ -1,20 +1,22 @@
 <div class="container">
+  <div class="row">
     <h1>Lista de estudantes</h1>
-
-    <hr>
-    <div>
-        <section *ngFor="let user of users">
-            <span>ID: {{user.nr_registry}} | NAME:{{user.nm_user}}</span>
-           <mat-form-field appearance="fill" (click)="getUser(user.nr_registry);">
-                <mat-label>Ações</mat-label>
-                <mat-select [(value)]="selected">
-                  <mat-option value="option2" (click)="openDialog();">Editar</mat-option>
-                  <mat-option value="option3" (click)="openDialog();">Deletar</mat-option>
-                </mat-select>
-              </mat-form-field>
-        </section>
-    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <section *ngFor="let user of users">
+      <div class="content">
+        <p class="id">{{user.nr_registry}}</p>
+        <span class="name">{{user.nm_user}}</span>
+      </div>
+      <mat-form-field appearance="fill" (click)="ListUser(user.nr_registry);">
+        <mat-label>Ações</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option value="option2" (click)="openDialog();">Editar estudante</mat-option>
+          <mat-option class="noyet  " value="option3" (click)="DeleteUser(user.nr_registry); ">Desativar estudante
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+  </div>
 </div>
-
-
-

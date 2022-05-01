@@ -7,7 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import { ExampleComponent } from './example/example.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { GradeUpdateComponent } from './grade-update/grade-update.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,10 +22,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,13 +35,14 @@ import {MatSelectModule} from '@angular/material/select';
     ProfessorNavBarComponent,
     StudentListComponent,
     StudentEditComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,

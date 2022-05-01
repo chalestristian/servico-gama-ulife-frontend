@@ -1,5 +1,4 @@
 <div class="container">
-
 <h1>Grade Update</h1>
 <hr>
 <form>
@@ -13,7 +12,6 @@
     </div>
 </form>
 </div>
-
 <form>
     <select name="state" ngModel>
       <option value="" disabled>Selecione o Aluno</option>
@@ -21,13 +19,10 @@
 
     </select>
   </form>
-
   <select [(ngModel)]="selectedOption" name="first">
     <option *ngFor="let user of users">{{user.nm_user}}
     </option>
   </select>
-<!-- button (click)="print()">Click e</button -->
-
 <p>Selected option: {{ selectedOption }}</p>
 <p>Button output: {{ printedOption }}</p>
 

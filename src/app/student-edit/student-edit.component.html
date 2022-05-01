@@ -1,3 +1,52 @@
-<h1>Editar estudantes</h1>
+<div class="container modal-body">
+    <h1>{{user.nm_user}}</h1>
+    <hr />
+<section>
+    <h5>MATRÍCULA: {{user.nr_registry}} - {{user.nr_userid}}</h5>
+    <form ngNativeValidate [formGroup]="formStudent" (ngSubmit)="onStudentSubmit()">
+        <p></p>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="nome" formControlName="nm_user"  value="{{user.nm_user}}" required>
+        </div>
+        <div class="form-group">
+            <label for="nome">Email</label>
+            <input type="text" class="form-control" name="nome" id="nome" formControlName="ds_email"  value="{{user.ds_email}}" required>
+        </div>
+        <input type="submit" class="btn btn-primary mt-4" value="Atualizar" >
+        <a href="/studentlist" class="btn btn-secondary mt-4 ml-2 ">Cancelar</a>
+    </form>
+</section>
+<hr />
+<section>
+    <div *ngIf= "userevaluations?.length === 0">
+        Este estudante não tem prova cadastrada.
+    </div>
+    <div *ngIf= "userevaluations?.length != 0">
+        <h5>AVALIAÇÕES</h5>
+        <table>
+            <thead>
+                <tr>
+                    <td>AVALIAÇÃO</td>
+                    <td>NOTA</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let userevaluation  of userevaluations; index as i">
+                    <td>Atividade Avaliativa {{i+1}}</td>
+                    <div class="form-group">
+                        <form ngNativeValidate [formGroup]="formEvaluation">
+                            <td><input type="text" class="form-control " name="nome" id="dr_grade" formControlName="dr_grade" placeholder="{{userevaluation.dr_grade}}" required></td>
+                            <td>
+                                <input type="submit" class="btn btn-primary mt-4 update" value="Atualizar" (click)="onEvaluationSubmit(this.userevaluation.nr_userevaluationid)">
+                                <a href="/studentlist" class="btn btn-secondary mt-4 ml-2 cancel">Cancelar</a>
+                            </td>
+                        </form>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</div>
 
-<P>WORK</P>
