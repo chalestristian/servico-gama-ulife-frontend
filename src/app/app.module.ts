@@ -9,9 +9,7 @@ import { ExampleComponent } from './example/example.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { GradeUpdateComponent } from './grade-update/grade-update.component'; 
 import { NoticeBoardComponent } from './notice-board/notice-board.component';
-import { CalendarComponent } from './calendar/calendar.component'; 
 import { LoginComponent } from './login/login.component';
 import { StudentComponent } from './student/student.component';
 import {MaterialModule} from './MaterialModule';
@@ -26,12 +24,12 @@ import { FooterComponent } from './footer/footer.component';
 import { TimerComponent } from './timer/timer.component';
 import { TeacherStudentsComponent } from './teacher-students/teacher-students.component';
 import { GradeUpdateComponent } from './grade-update/grade-update.component';
-import { HeaderComponent } from './header/header.component';
-import { StudentNavBarComponent } from './nav-bar/student-nav-bar/student-nav-bar.component';
-import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
-import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
+//import { HeaderComponent } from './header/header.component';
+//import { StudentNavBarComponent } from './nav-bar/student-nav-bar/student-nav-bar.component';
+//import { StudentNoticeBoardComponent } from './student-notice-board/student-notice-board.component';
+//import { ProfessorNoticeBoardComponent } from './professor-notice-board/professor-notice-board.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { ProfessorNavBarComponent } from './nav-bar/professor-nav-bar/professor-nav-bar.component';
+//import { ProfessorNavBarComponent } from './nav-bar/desktop';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -58,12 +56,12 @@ import {MatSelectModule} from '@angular/material/select';
     TimerComponent,
     TeacherStudentsComponent,
     GradeUpdateComponent,
-    HeaderComponent,
-    StudentNavBarComponent,
-    StudentNoticeBoardComponent,
-    ProfessorNoticeBoardComponent,
+  // HeaderComponent,
+   // StudentNavBarComponent,
+   // StudentNoticeBoardComponent,
+    //ProfessorNoticeBoardComponent,
     CalendarComponent,
-    ProfessorNavBarComponent,
+    //ProfessorNavBarComponent,
     StudentListComponent,
     StudentEditComponent,
   ],
