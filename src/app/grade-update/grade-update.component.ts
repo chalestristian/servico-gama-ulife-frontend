@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserEvaluationModel } from '../models/userevaluation.model';
-import { UserModel } from '../models/user.model';
+import { StudentModel } from '../models/student.model';
 import { GradeUpdateService } from '../services/grade-update-service/grade-update.service';
 
 @Component({
@@ -12,14 +12,11 @@ export class GradeUpdateComponent implements OnInit {
 
   userevaluation: UserEvaluationModel = new UserEvaluationModel();
   userevaluations: Array<any> = new Array();
-
-  user: UserModel = new UserModel();
+  user: StudentModel = new StudentModel();
   users: Array<any> = new Array();
-
   selectedOption?: string;
   printedOption?: string;
   
-
   constructor(private gradeUpdateService : GradeUpdateService) { }
 
   ngOnInit(){
@@ -46,16 +43,4 @@ export class GradeUpdateComponent implements OnInit {
       },
       err => (console.log('Erro ao listar', err)))
     }
-
-    //print() {
-   //   this.printedOption = this.selectedOption;
-   //   this.user.nr_user == this.selectedOption
-   //   console.log("My input: ", this.user);
-   // }
-  //  listUser(){
-  //     this.gradeUpdateService.listGrade().subscribe(userevaluations => {
-  //     this.userevaluations = userevaluations;
-  //     },
-  //     err => (console.log('Erro ao atualizar', err)))
-  //   }
-  }
+}

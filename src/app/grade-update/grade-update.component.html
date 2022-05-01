@@ -3,6 +3,10 @@
   <h1>Grade Update</h1>
   <hr>
   <form>
+
+<h1>Grade Update</h1>
+<hr>
+<form>
     <div class="form-group">
       <p>UserId<input type="text" [(ngModel)]="userevaluation.nr_userid" name="userid" class="form-control"></p>
       <p>UserEvaluationId<input type="text" [(ngModel)]="userevaluation.nr_userevaluationid" name="userevaluationid"
@@ -15,7 +19,6 @@
     </div>
   </form>
 </div>
-
 <form>
   <select name="state" ngModel>
     <option value="" disabled>Selecione o Aluno</option>
@@ -30,6 +33,17 @@
 </select>
 <!-- <button (click)="print()">Click e</button> -->
 
+
+    <select name="state" ngModel>
+      <option value="" disabled>Selecione o Aluno</option>
+      <option *ngFor="let user of users">{{user.nm_user}}</option>
+
+    </select>
+  </form>
+  <select [(ngModel)]="selectedOption" name="first">
+    <option *ngFor="let user of users">{{user.nm_user}}
+    </option>
+  </select>
 <p>Selected option: {{ selectedOption }}</p>
 <p>Button output: {{ printedOption }}</p>
 

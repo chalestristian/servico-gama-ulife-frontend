@@ -3,5 +3,7 @@ export class UserEvaluationModel{
     nr_userid?: number;
     nr_evaluationid?: number;
     dr_grade?: number;
-    ds_hasdone = true; // Sempre true, pois, o professor só poderá corrigir a prova se a mesma foi entregue. ;)
+    ds_hasdone?: boolean = true;
+    dt_creationdate?: Date;
+    dt_modifieddate?: Date;
 }
