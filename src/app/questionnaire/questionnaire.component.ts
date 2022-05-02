@@ -39,13 +39,13 @@ export class QuestionnaireComponent implements OnInit {
     this.httpService.get<any[]>("Questionnaire/" + this.customTitle + "/QuestionList")
       .subscribe({
         error: (e) => { this.handlerError(e) },
-        next: (e) => { this.questionList = e; this.loadding = true; console.log(this.questionList) }
+        next: (e) => { this.questionList = e; this.loadding = true; }
       }
       );
   }
 
   submitForm() {
-    this.httpService.post<any[]>({ Answers: this.answers }, "Evaluation/4/" + this.customTitle)
+    this.httpService.post<any[]>({ Answers: this.answers }, "Evaluation/"+this.questionnaire["nr_questionnaireId"]+ "/" + this.customTitle)
       .subscribe({
         error: (e) => { this.handlerError(e) },
         next: (e) => {
