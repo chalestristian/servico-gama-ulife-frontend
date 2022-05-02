@@ -26,66 +26,61 @@ export class LoginComponent implements OnInit {
   }
 
   loading: boolean = false;
-  email: string = "";
-  password: string = "";
+  email: string = '';
+  password: string = '';
 
   async submit() {
-    
-    this.cookieTest();
-    this.router.navigate(['professor']);
-/*     let data = {
+     let data = {
       user: this.email,
       password: this.password
     };
     this.loading = true;
-    this.httpService.post<auth>(data, "UserAuthentication")
+    this.httpService.post<auth>(data, 'UserAuthentication')
       .subscribe({
         error: (e) => { this.handlerError(e) },
-        next: (e) => { this.verifyLogin(e) }
+        next: (e) => {   
+          this.cookie(e); 
+          this.verifyLogin(e);
+        }
       }
       );
- */
   }
 
   clearCookie(){
     this.cookieService.deleteAll();
-  }
-
-  // TODO: Remover, utilizado para testes.
-  cookieTest(){
-    this.cookieService.set('logged','true', { expires: 1 });
-    this.cookieService.set("token", '123123123', { expires: 1 });
-    this.cookieService.set("name", 'Victor A. Lanni', { expires: 1 });
-    this.cookieService.set("role", 'professor', { expires: 1 });
-  }
+  } 
 
   cookie(data : auth){
-    this.cookieService.set('logged','true', { expires: 1 });
-    this.cookieService.set("token", data.token, { expires: 1 });
-    this.cookieService.set("name", data.name, { expires: 1 });
-    this.cookieService.set("role", data.role.toString(), { expires: 1 });
+
+    var role = '';
+    if(data.role == 1){
+      role = 'aluno';
+    }else if(data.role == 2){
+      role = 'professor';
+    }
+    this.cookieService.set('token', data.token, { expires: 1, path:'/' });
+    this.cookieService.set('role', role, { expires: 1, path:'/' });
+    this.cookieService.set('name', data.name, { expires: 1, path:'/' }); 
   }
 
-  verifyLogin(data: auth) {
-    this.cookie(data);
-    this.loading = false;  
+  verifyLogin(data: auth) { 
+    this.loading = false;   
     switch (data.role) {
       case 1:
-        //TODO: Definir rota do aluno
+        //TODO: Definir rota do aluno 
         this.router.navigate(['aluno'])
         break;
       case 2:
-        //TODO: Definir rota do professor
+        //TODO: Definir rota do professor 
         this.router.navigate(['professor'])
         break;
-      default:
+      default: 
         break;
     }
   }
 
   handlerError(data: any) {
-    this.toastService.success("Usuário ou senha incorreto");
-    console.log(data);
+    this.toastService.error('Usuário ou senha incorreto'); 
     this.loading = false;
   }
 }

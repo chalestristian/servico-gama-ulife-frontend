@@ -8,7 +8,7 @@ import { HttpClientService } from '../services/http/http-client.service';
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent implements OnInit {
- 
+
   customTitle: string = "4";
 
   constructor(
@@ -20,7 +20,7 @@ export class QuestionnaireComponent implements OnInit {
     this.customTitle = this.router.parseUrl(this.router.url).queryParams['id'];
     this.callApi();
   }
-  
+
   questionList: any = [];
   questionnaire: any;
   answers: any = [];
@@ -45,17 +45,17 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   submitForm() {
-    this.httpService.post<any[]>({ Answers: this.answers }, "Evaluation/4/"+this.customTitle)
+    this.httpService.post<any[]>({ Answers: this.answers }, "Evaluation/4/" + this.customTitle)
       .subscribe({
         error: (e) => { this.handlerError(e) },
-        next: (e) => { 
+        next: (e) => {
           this.back();
         }
       }
       );
     this.sendLoadding = true;
     this.disabled = false;
-    
+
   }
 
   handlerError(e: any) {

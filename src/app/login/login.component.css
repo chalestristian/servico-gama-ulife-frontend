@@ -6,7 +6,8 @@
 }
 .loginBtn{ 
     place-items: center;
-    max-width: 150px;
+    max-width: 200px;
+    flex-wrap: nowrap; 
 }
 
 #content {

@@ -7,7 +7,7 @@
             <hr>
         </div>
         <!-- Login Form -->
-        <form ngNativeValidate class="col-12 pb-5" (ngSubmit)="submit()"> 
+        <form ngNativeValidate class="col-12 pb-5 pt-5" (submit)="submit()"> 
             <div class="row pb-5">
                 <div class="form-group">
                     <input type="email" id="email" class="form-control form-control-lg fadeIn second" name="email"
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="row loginBtn">
-                <button type="submit" class="btn btn-primary btn-lg fadeIn fourth ">
+                <button type="submit" class="btn btn-primary btn-lg fadeIn fourth p-3">
                     <span *ngIf="!loading">Log In</span>
                     <div *ngIf="loading">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

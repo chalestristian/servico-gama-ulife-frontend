@@ -17,12 +17,16 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
-            <td>{{ user.nr_registry }}</td>
-            <td>{{ user.nm_user }}</td>
+            <td>{{ user["nr_registry"] }}</td>
+            <td>{{ user["nm_user"] }}</td>
             <!-- <td><button class="btn btn-success text-white" (click)="openDialog(user);">Editar</button></td> -->
-            <td><button class="btn btn-success text-white" (click)="openDialogTest(user)">Editar</button></td>
+            <td><button class="btn btn-success text-white" (click)="openDialog(user)">Editar</button></td>
             <td>
-              <mat-slide-toggle [checked]="true" color="danger" #tg>
+              <mat-slide-toggle 
+              [checked]="user['isActive']" 
+              color="danger" #tg
+              (toggleChange)="toggleActived(user, tg.checked)"
+              >
               </mat-slide-toggle>
               <span style="font-size: 1rem;" *ngIf="tg.checked != true">
                 Desativado

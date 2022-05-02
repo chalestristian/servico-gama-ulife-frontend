@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { StudentListEditService } from '../services/student-list-edit-service/student-list-edit-service';
 
 @Component({
@@ -27,7 +28,8 @@ export class MatDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private studentListEditService: StudentListEditService
+    private studentListEditService: StudentListEditService,
+    private toastService: ToastrService
   ) { }
   ngOnInit(): void {
     this.GetUserEvaulation(this.data.nr_userid);
@@ -65,7 +67,7 @@ export class MatDialogComponent implements OnInit {
 
   GetUser(id: any) {
     this.studentListEditService.GetUserById(id).subscribe(user => {
-      this.user = user; 
+      this.user = user;
       this.createFormStudent(user);
     }, err => {
       console.log("Erro ao tentar buscar user", err)
@@ -73,13 +75,22 @@ export class MatDialogComponent implements OnInit {
   }
 
   onStudentSubmit() {
-    if(this.verifyString(this.formStudent.value.nm_user)){
-      this.formStudent.value.nm_user = this.user['nm_user'];
+    if (this.formStudent.value.nm_user == this.user['nm_user'] && this.formStudent.value.ds_email == this.user['ds_email']) {
+      this.toastService.warning("Nenhum dado do usuário modificado.")
+    } else {
+      if (this.verifyString(this.formStudent.value.nm_user)) {
+        this.formStudent.value.nm_user = this.user['nm_user'];
+      }
+      if (this.verifyString(this.formStudent.value.ds_email)) {
+        this.formStudent.value.ds_email = this.user['ds_email'];
+      }
+      this.studentListEditService.UpdateUser(this.user.nr_registry, this.formStudent.value)
+        .subscribe({
+          error: (e) => { this.toastService.error("Erro ao alterada os dados do usuário.") },
+          next: (e) => { this.toastService.success("Dados atualizados com sucesso.") }
+        }
+        );
     }
-    if(this.verifyString(this.formStudent.value.ds_email)){
-      this.formStudent.value.ds_email = this.user['ds_email'];
-    }
-    return this.studentListEditService.UpdateUser(this.user.nr_registry, this.formStudent.value).subscribe()
   }
   verifyString(str: string) {
     if (str === null || str === '') {
@@ -87,10 +98,10 @@ export class MatDialogComponent implements OnInit {
     }
     return false;
   }
-  
+
   onEvaluationSubmit(id: number) {
     this.studentListEditService.GetUserEvaluationByUserEvaluationId(id).subscribe(userevaluation => {
-      this.userevaluation = userevaluation; 
+      this.userevaluation = userevaluation;
       this.formEvaluation.value.nr_userid = this.userevaluation.nr_userid
       this.formEvaluation.value.nr_evaluationid = this.userevaluation.nr_evaluationid
 
@@ -104,9 +115,10 @@ export class MatDialogComponent implements OnInit {
       this.formEvaluation.value.nr_userevaluationid = this.userevaluation.nr_userevaluationid
       let data = this.formEvaluation.value
       this.studentListEditService.UpdateUserEvaluation(data).subscribe()
-
+      this.toastService.success("Nota alterada com sucesso.")
     }, err => {
+      this.toastService.error("Não foi possível alterar a nota.")
       console.log("Erro", err)
     })
-  } 
+  }
 }

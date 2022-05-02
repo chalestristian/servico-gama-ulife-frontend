@@ -15,6 +15,7 @@ export class GradeComponent implements OnInit {
   selected: string = "Notas";
   dtTrigger: Subject<any> = new Subject<any>();
   dtOptions: DataTables.Settings = {};
+  loadding: boolean = true;
 
   constructor(
     private router: Router,
@@ -29,12 +30,13 @@ export class GradeComponent implements OnInit {
   }
 
   callApi() {
-    this.httpService.get<any[]>("User/UserEvaluations/4")
+    this.httpService.get<any[]>("User/UserEvaluations/")
       .subscribe({
         error: (e) => { console.log(e) },
         next: (e) => { 
           this.evaluations = e; 
           this.dtTrigger.next(e);
+          this.loadding = false;
         }
       }
       ); 
@@ -47,7 +49,7 @@ export class GradeComponent implements OnInit {
         ano  = data.getFullYear(),
         hora = data.getHours(),
         minutos = data.getMinutes(),
-        segundos = data.getSeconds()
+        segundos = data.getSeconds();
 
     return dia +"/"+ mes +"/"+ ano +"-"+ hora +":"+ minutos +":"+ segundos;
 }

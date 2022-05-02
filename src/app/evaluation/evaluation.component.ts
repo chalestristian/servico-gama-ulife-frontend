@@ -26,7 +26,7 @@ export class EvaluationComponent implements OnInit {
   }
 
   callApi() {
-    this.httpService.get<any[]>("Evaluation/GetEvaluationByUserId/4")
+    this.httpService.get<any[]>("Evaluation/GetEvaluationByUserId")
       .subscribe({
         error: (e) => { this.loadding = false; },
         next: (e) => { this.list = e; this.listBackup = e; this.loadding = false; }

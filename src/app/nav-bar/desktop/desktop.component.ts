@@ -13,6 +13,7 @@ export class DesktopComponent implements OnInit {
   //Define qual item foi selecionado no menu.
   @Input()
   selected: string | undefined;
+  name: string = "";
 
   @Input()
   disabled: boolean = true;
@@ -38,6 +39,7 @@ export class DesktopComponent implements OnInit {
     private cookieService: CookieService) { }
  
   ngOnInit(): void {
+    this.name = this.cookieService.get('name');
     switch (this.cookieService.get('role')) {
       case 'aluno':
         this.itens = [...this.student];

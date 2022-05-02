@@ -2,13 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StudentModel } from '../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentListEditService } from '../services/student-list-edit-service/student-list-edit-service';
-import { StudentEditComponent } from '../student-edit/student-edit.component';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 import { StatusStudent } from '../models/statusstudent.model';
 import { UserEvaluationModel } from '../models/userevaluation.model';
 import { EvaluationModel } from '../models/evaluation.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpClientService } from '../services/http/http-client.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-list',
@@ -31,7 +32,9 @@ export class StudentListComponent implements OnInit {
 
 
   constructor(
-    private studentListEditService: StudentListEditService, 
+    private studentListEditService: StudentListEditService,
+    private toastService: ToastrService, 
+    private httpService: HttpClientService,
     public dialog: MatDialog,
     private router: Router) { }
 
@@ -77,19 +80,9 @@ export class StudentListComponent implements OnInit {
   GetId(): void {
     let userId = this.studentListEditService.getSession('UserId');
     return userId
-  }
- 
+  } 
 
-  openDialog(data: any) { 
-    this.dialog.open(StudentEditComponent, {
-     data
-    });
-    this.selected = 'Ações';
-  }
-
-
-  
-  openDialogTest(data: any): void {
+  openDialog(data: any): void {
     const dialogRef = this.dialog.open(MatDialogComponent, {
       width: '400px',
       data,
@@ -103,7 +96,12 @@ export class StudentListComponent implements OnInit {
     });
   }
   
-  toggleActived(value: any){
-    console.log(value);
+  toggleActived(user : any, isActive : any){ 
+    this.httpService.put({},`User/${user['nr_userid']}/${!isActive}`)
+      .subscribe({
+        error: (e) => { this.toastService.error("Erro ao alterada a situação do usuário.") },
+        next:  (e) => { this.toastService.success("Situação alterada com sucesso.") }
+      }
+      );
   }
 }

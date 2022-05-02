@@ -12,30 +12,30 @@ export class HttpClientService {
   constructor(
     private http: HttpClient,
     private cookieService: CookieService
-  ) {
-
-  }
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: this.cookieService.get("token")
-    })
-  };
+  ) { } 
 
   get<T>(endPoint: string): Observable<T> {
-    return this.http.get<T>(baseURL + endPoint, this.httpOptions
-    );
+    return this.http.get<T>(baseURL + endPoint,  this.headerRequest());
   };
 
   post<T>(data: any, endPoint: string): Observable<T> {
-    return this.http.post<T>(baseURL + endPoint, data, this.httpOptions);
+    return this.http.post<T>(baseURL + endPoint, data,  this.headerRequest());
   };
 
   put<T>(data: any, endPoint: string): Observable<T> {
-    return this.http.put<T>(baseURL + endPoint, data, this.httpOptions);
+    return this.http.put<T>(baseURL + endPoint, data,  this.headerRequest());
   };
 
   delete<T>(endPoint: string): Observable<T> {
-    return this.http.delete<T>(baseURL + endPoint, this.httpOptions);
+    return this.http.delete<T>(baseURL + endPoint, this.headerRequest());
   };
+
+  headerRequest(){
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        token: this.cookieService.get("token")
+      })
+    }
+  }
 }

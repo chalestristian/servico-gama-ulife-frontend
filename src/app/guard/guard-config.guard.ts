@@ -18,7 +18,7 @@ export class GuardConfigGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       var token = this.cookieService.get("token");
-      var role = this.cookieService.get("role");
+      var role = this.cookieService.get("role"); 
 
       // TODO: Definir regras para redirecionamento/autenticação.   
 

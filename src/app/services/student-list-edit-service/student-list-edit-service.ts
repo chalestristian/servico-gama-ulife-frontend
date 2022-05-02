@@ -33,7 +33,7 @@ export class StudentListEditService {
   }
 
   GetAllEvaluation(): Observable<any> {
-    return this.http.get(`https://localhost:5001/api/Evaluation`); // TEM QUE ALTERAR A URL DE LOCAL PARA PROD
+    return this.http.get(`${baseURL}Evaluation`); // TEM QUE ALTERAR A URL DE LOCAL PARA PROD
   }
 
   GetAllUserEvaluation(): Observable<any> {
@@ -70,7 +70,6 @@ export class StudentListEditService {
   }
 
   Delete(id: any): Observable<any> {
-    return this.http.delete(`https://localhost:5001/api/User/`.concat(id)); // TEM QUE ALTERAR A URL DE LOCAL PARA PROD
-  }
-
+    return this.http.delete(`${baseURL}User/`.concat(id)); // TEM QUE ALTERAR A URL DE LOCAL PARA PROD
+  } 
 }
