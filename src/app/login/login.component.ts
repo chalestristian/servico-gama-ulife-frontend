@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   async submit() {
     
     this.cookieTest();
-    this.router.navigate(['aluno']);
+    this.router.navigate(['professor']);
 /*     let data = {
       user: this.email,
       password: this.password
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     this.cookieService.set('logged','true', { expires: 1 });
     this.cookieService.set("token", '123123123', { expires: 1 });
     this.cookieService.set("name", 'Victor A. Lanni', { expires: 1 });
-    this.cookieService.set("role", 'aluno', { expires: 1 });
+    this.cookieService.set("role", 'professor', { expires: 1 });
   }
 
   cookie(data : auth){
