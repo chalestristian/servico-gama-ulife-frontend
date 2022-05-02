@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentListEditService } from '../services/student-list-edit-service/student-list-edit-service';
 import { StudentModel } from '../models/student.model';
@@ -7,6 +7,7 @@ import { UserEvaluationModel } from '../models/userevaluation.model';
 import { QuestionnaireModel } from '../models/questionnaire.model';
 import { EvaluationModel } from '../models/evaluation.model';
 import { ThisReceiver } from '@angular/compiler';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-student-edit',
@@ -15,28 +16,30 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class StudentEditComponent implements OnInit {
 
-  UserId!: number;
-  userid!: number;
+  UserId!: any;
+  userid!: any;
   Evaluation!: any;
   user: StudentModel = new StudentModel();
   users: Array<any> = new Array();
   userevaluation: UserEvaluationModel = new UserEvaluationModel();
   userevaluations: Array<any> = new Array();
   evaluation: EvaluationModel = new EvaluationModel();
-  evaluations: Array<any> = new Array();
   formStudent!: FormGroup;
   formEvaluation!: FormGroup;
 
-  constructor(private studentListEditService: StudentListEditService, public dialog: MatDialog) { }
+ 
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data : any,
+    private studentListEditService: StudentListEditService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.createFormStudent(new StudentModel())
     this.createFormEvaluation(new UserEvaluationModel())
-    this.UserId = Number(this.GetRegistry())
-    this.userid = Number(this.GetUserId())
-    this.GetUser(this.UserId)
-    console.log(this.GetUserEvaulation(this.userid))
-    this.evaluations = (JSON.parse(this.studentListEditService.getSession('Test')))
+    this.UserId = this.data.nr_registry;
+    this.userid = this.data.nr_userid;
+
+    this.GetUser(this.UserId);
+    this.GetUserEvaulation(this.userid);
   }
 
   GetUser(id: number) {
@@ -49,47 +52,18 @@ export class StudentEditComponent implements OnInit {
 
   GetUserEvaulation(id: number) {
     this.studentListEditService.GetUserEvaluationById(id).subscribe(userevaluations => {
-      this.userevaluations = userevaluations;
-      let evaluations = (JSON.parse(this.studentListEditService.getSession('Test')))
-
-      for (let i = 0; i < userevaluations.length; i++) {
-        for (let j = 0; j < evaluations.length; j++) {
-          if (this.userevaluations[i].nr_evaluationid === evaluations[j].nr_evaluationid) {
-            console.log(' IGUAIS, POIS ' + this.userevaluations[i].nr_evaluationid + ' É IGUAL A ' + evaluations[j].nr_evaluationid)
-            console.log(Object.assign(evaluations[j], userevaluations[i]))
-          } else {
-          }
-        }
-      }
+      this.userevaluations = userevaluations; 
     }, err => {
       console.log("Erro ao tentar buscar user/evaluation", err)
     })
-  }
-
-  GetQuestionnaire(id: number) {
-    this.studentListEditService.GetUserEvaluationById(id).subscribe(userevaluations => {
-      this.userevaluations = userevaluations;
-    }, err => {
-      console.log("Erro ao tentar buscar questionario por id", err)
-    })
-  }
-
+  } 
+  
   List() {
     this.studentListEditService.GetAllUser().subscribe(user => {
       this.user = user;
     }, err => {
       console.log('Erro ao listar', err)
     })
-  }
-
-  GetRegistry(): void {
-    let userId = this.studentListEditService.getSession('UserId');
-    return userId
-  }
-
-  GetUserId(): void {
-    let userid = this.studentListEditService.getSession('userid');
-    return userid
   }
 
   createFormStudent(user: StudentModel) {

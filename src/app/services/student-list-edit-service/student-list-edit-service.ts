@@ -53,7 +53,7 @@ export class StudentListEditService {
   }
 
   UpdateUser(id: any, user: StudentModel): Observable<any> {
-    return this.http.put(`https://localhost:5001/api/User`.concat(id), user); // TEM QUE ALTERAR A URL DE LOCAL PARA PROD
+    return this.http.put(`${baseURL}User/`.concat(id), user); // TEM QUE ALTERAR A URL DE LOCAL PARA PROD
   }
 
   UpdateUserEvaluation(data: UserEvaluationModel): Observable<any> {

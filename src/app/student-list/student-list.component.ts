@@ -3,9 +3,12 @@ import { StudentModel } from '../models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentListEditService } from '../services/student-list-edit-service/student-list-edit-service';
 import { StudentEditComponent } from '../student-edit/student-edit.component';
+import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 import { StatusStudent } from '../models/statusstudent.model';
 import { UserEvaluationModel } from '../models/userevaluation.model';
 import { EvaluationModel } from '../models/evaluation.model';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-list',
@@ -23,17 +26,28 @@ export class StudentListComponent implements OnInit {
   userevaluations: Array<any> = new Array();
   evaluation: EvaluationModel = new EvaluationModel();
   evaluations: Array<any> = new Array();
+  dtTrigger: Subject<any> = new Subject<any>();
+  dtOptions: DataTables.Settings = {};
 
-  constructor(private studentListEditService: StudentListEditService, public dialog: MatDialog) { }
+
+  constructor(
+    private studentListEditService: StudentListEditService, 
+    public dialog: MatDialog,
+    private router: Router) { }
+
   ngOnInit() {
     this.ListUsers();
-    Number(this.UserId = this.GetId());
-    this.GetEvaluation()
+    Number(this.UserId = this.GetId()); 
   }
 
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+  
   ListUsers(): void {
     this.studentListEditService.GetAllUser().subscribe(users => {
       this.users = users;
+      this.dtTrigger.next(users);
     },
       err => (console.log('Erro ao listar', err)))
   }
@@ -64,16 +78,32 @@ export class StudentListComponent implements OnInit {
     let userId = this.studentListEditService.getSession('UserId');
     return userId
   }
+ 
 
-  GetEvaluation() {
-    this.studentListEditService.GetAllEvaluation().subscribe(evaluations => {
-      this.evaluations = evaluations;
-      this.studentListEditService.setSession("Test", this.evaluations);
-    })
+  openDialog(data: any) { 
+    this.dialog.open(StudentEditComponent, {
+     data
+    });
+    this.selected = 'Ações';
   }
 
-  openDialog() {
-    this.dialog.open(StudentEditComponent);
-    this.selected = 'Ações';
+
+  
+  openDialogTest(data: any): void {
+    const dialogRef = this.dialog.open(MatDialogComponent, {
+      width: '400px',
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(["professor/alunos"]); 
+    });
+  }
+  
+  toggleActived(value: any){
+    console.log(value);
   }
 }
