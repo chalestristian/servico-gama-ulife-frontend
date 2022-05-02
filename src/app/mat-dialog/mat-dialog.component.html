@@ -1,0 +1,52 @@
+<div *ngIf="user != null">
+    <h1>{{user['nm_user']}}</h1>
+    <hr />
+    <h5>MATRÍCULA: {{user['nr_registry']}} - {{user['nr_userid']}}</h5>
+    <form [formGroup]="formStudent" ngNativeValidate (ngSubmit)="onStudentSubmit()">
+        <p></p>
+        <div class="form-group">
+            <label for="nm_user">Nome</label>
+            <input type="text" class="form-control" name="nm_user" id="nm_user" [value]="user['nm_user']"
+            formControlName="nm_user" required>
+        </div>
+        <div class="form-group">
+            <label for="ds_email">Email</label>
+            <input type="text" class="form-control" name="ds_email" id="ds_email" [value]="user['ds_email']"
+            formControlName="ds_email" required>
+        </div>
+        <div class="buttons pt-3">
+            <button type="submit" class="btn btn-primary" value="Atualizar">Atualizar</button>  
+            <button class="btn btn-secondary">Cancelar</button>
+        </div>
+    </form>
+    <hr />
+</div>
+<div *ngIf="userevaluations.length > 0">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>AVALIAÇÃO</td>
+                <td>NOTA</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userevaluation  of userevaluations;let index">
+                <td>{{userevaluation['nm_evaluation']}}</td>
+                <div class="form-group">
+                    <form [formGroup]="formEvaluation" ngNativeValidate
+                    (ngSubmit)="onEvaluationSubmit(userevaluation['nr_userevaluationid'])"
+                    >
+                        <td>
+                            <input type="text" class="form-control" name='nome' [id]="'dr_grade'+ index"
+                                [placeholder]="userevaluation['dr_grade']" formControlName="dr_grade" required>
+                        </td>
+                        <td class="buttons">
+                            <input type="submit" class="btn btn-primary " value="Atualizar">
+                            <button class="btn btn-secondary ">Cancelar</button>
+                        </td>
+                    </form>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
