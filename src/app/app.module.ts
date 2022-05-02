@@ -29,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GradeUpdateComponent } from './grade-update/grade-update.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { StudentListComponent } from './student-list/student-list.component';
+import { TeacherEvaluationsComponent } from './teacher-evaluations/teacher-evaluations.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { StudentListComponent } from './student-list/student-list.component';
     TimerComponent,
     TeacherStudentsComponent,
     StudentListComponent,
-    MatDialogComponent
+    MatDialogComponent,
+    TeacherEvaluationsComponent
   ],
   imports: [
     BrowserModule,

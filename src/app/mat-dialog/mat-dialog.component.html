@@ -7,19 +7,16 @@
         <div class="form-group">
             <label for="nm_user">Nome</label>
             <input type="text" class="form-control" name="nm_user" id="nm_user" [value]="user['nm_user']"
-            formControlName="nm_user" required>
+                formControlName="nm_user" required>
         </div>
         <div class="form-group">
             <label for="ds_email">Email</label>
             <input type="text" class="form-control" name="ds_email" id="ds_email" [value]="user['ds_email']"
-            formControlName="ds_email" required>
+                formControlName="ds_email" required>
         </div>
-        <div class="buttons pt-3"> 
-            <button 
-            type="submit" 
-            class="btn btn-primary" 
-            value="Atualizar">Atualizar
-        </button>   
+        <div class="buttons pt-3">
+            <button type="submit" class="btn btn-primary" value="Atualizar">Atualizar
+            </button>
         </div>
     </form>
     <hr />
@@ -36,23 +33,13 @@
             <tr *ngFor="let userevaluation  of userevaluations;let index">
                 <td class="w-50">{{userevaluation['nm_evaluation']}}</td>
                 <div class="form-group">
-                    <form [formGroup]="formEvaluation" ngNativeValidate
-                    (ngSubmit)="onEvaluationSubmit(userevaluation['nr_userevaluationid'])"
-                    >
-                        <td class="buttons">
-                            <input 
-                                style="margin-right: 10px;"
-                                type="text" 
-                                class="form-control" 
-                                name='nome' 
-                                [id]="'dr_grade'+ index"
-                                [placeholder]="userevaluation['dr_grade']" 
-                                formControlName="dr_grade" 
-                                required 
-                            >
-                            <button type="submit" class="btn btn-primary material-icons">done</button>
-                        </td> 
-                    </form>
+                    <td class="buttons">
+                        <input style="margin-right: 10px;" type="text" class="form-control" name='nome'
+                            [id]="'dr_grade'+ index" [placeholder]="userevaluation['dr_grade']" #gradeInput
+                            formControlName="dr_grade" required>
+                        <button type="button" class="btn btn-primary material-icons"
+                            (click)="onEvaluationSubmit(userevaluation, gradeInput.value)">done</button>
+                    </td>
                 </div>
             </tr>
         </tbody>

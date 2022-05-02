@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { StudentListEditService } from '../services/student-list-edit-service/student-list-edit-service';
@@ -29,7 +29,8 @@ export class MatDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private studentListEditService: StudentListEditService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private fb: FormBuilder
   ) { }
   ngOnInit(): void {
     this.GetUserEvaulation(this.data.nr_userid);
@@ -99,22 +100,14 @@ export class MatDialogComponent implements OnInit {
     return false;
   }
 
-  onEvaluationSubmit(id: number) {
-    this.studentListEditService.GetUserEvaluationByUserEvaluationId(id).subscribe(userevaluation => {
-      this.userevaluation = userevaluation;
-      this.formEvaluation.value.nr_userid = this.userevaluation.nr_userid
-      this.formEvaluation.value.nr_evaluationid = this.userevaluation.nr_evaluationid
+  onEvaluationSubmit(userevaluation: any, grade :any) {
+    console.log(userevaluation);
+    console.log(this.formEvaluation);
+    this.studentListEditService.GetUserEvaluationByUserEvaluationId(userevaluation["nr_userevaluationid"]).subscribe(userevaluation => {
+      this.userevaluation = userevaluation; 
+      this.userevaluation["dr_grade"] = grade;
 
-      if (this.formEvaluation.value.dr_grade === null) {
-        return console.log('insira um valor') // nao deixa setar zero se nao preencher
-      } else {
-        this.formEvaluation.value.dr_grade = Number(this.formEvaluation.value.dr_grade)
-      }
-
-      this.formEvaluation.value.ds_hasdone = true
-      this.formEvaluation.value.nr_userevaluationid = this.userevaluation.nr_userevaluationid
-      let data = this.formEvaluation.value
-      this.studentListEditService.UpdateUserEvaluation(data).subscribe()
+      this.studentListEditService.UpdateUserEvaluation(userevaluation).subscribe()
       this.toastService.success("Nota alterada com sucesso.")
     }, err => {
       this.toastService.error("Não foi possível alterar a nota.")

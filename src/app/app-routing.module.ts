@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component'; 
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { StudentComponent } from './student/student.component';
+import { TeacherEvaluationsComponent } from './teacher-evaluations/teacher-evaluations.component';
 import { TeacherStudentsComponent } from './teacher-students/teacher-students.component';
 import { TeacherComponent } from './teacher/teacher.component';
 
@@ -32,6 +33,9 @@ const routes: Routes = [
   },
   {
     path: "professor/alunos", component: TeacherStudentsComponent, canActivate:[GuardConfigGuard]
+  },
+  {
+    path: "professor/provas", component: TeacherEvaluationsComponent, canActivate:[GuardConfigGuard]
   },
   {
     path: "**", component: NotFoundComponent, canActivate:[GuardConfigGuard]

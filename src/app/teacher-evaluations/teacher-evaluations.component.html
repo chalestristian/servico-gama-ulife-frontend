@@ -1,0 +1,68 @@
+<div class="container">
+    <app-desktop [selected]="selected" [disabled]="false"></app-desktop>
+    <div *ngIf="loadding" class="col-sm-12 col-md-12 p-1 ">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="">
+            Filtrar:
+            <div class="row">
+                    <div class="col-12 col-sm-4 col-lg-3">
+                            <select class="form-select" #t (change)="filter(t.value);">
+                                    <option selected value="---">---</option>
+                                    <option value="nm_user">Professor</option>
+                                    <option value="nm_evaluation">Matéria</option>
+                            </select>
+                    </div>
+                    <div class="col-8 col-sm-6 col-lg-5" *ngIf="t.value !== '---'">
+                            <div class="form-group has-search">
+                                    <span class="material-icons form-control-feedback">
+                                            search
+                                    </span>
+                                    <input type="text" class="form-control" id="filtro" [(ngModel)]="filterField"
+                                            (input)="search(filterField)" placeholder="Buscar..." />
+                            </div>
+                    </div>
+                    <div class="col-2" *ngIf="t.value !== '---'">
+                            <button mat-button style="width: 10px;" (click)="order()">
+                                    <span *ngIf="sort == true" class="material-icons">
+                                            arrow_upward
+                                    </span>
+                                    <span *ngIf="sort == false" class="material-icons">
+                                            arrow_downward
+                                    </span>
+                            </button>
+                    </div>
+            </div>
+            <hr> 
+            <div *ngIf="loadding and list.length >= 0">
+                    Nenhuma avaliação disponível.
+            </div>
+            <div class="row mb-5" style="padding-bottom: 80px;">
+                    <div *ngFor="let item of list" class="col-12 col-sm-6 col-md-3 p-1 cardHover ">
+                            <div class="card border rounded-3 bg-white" style="height: 300px;">
+                                    <div class="card-header bg-white">
+                                            <h4 class="card-title fw-bold">{{item["nm_evaluation"]}} </h4>
+                                    </div>
+                                    <div class="card-body bg-white">
+                                            <div class="container-card h-100">
+                                                    <div class="nm_questionnaire">
+                                                            <span class="text-decoration-underline">Questionário:
+                                                            </span>
+                                                            <br>
+                                                            <span>{{item["nm_questionnaire"]}}</span>
+                                                    </div>
+                                                    <div class="nm_user">
+                                                            <hr>
+                                                            <span>Professor: {{item["nm_user"]}}</span>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="card-footer text-end bg-white"> 
+                                            <span class="fw-bold btn disabled">Nota: {{item['dr_grade']}}</span>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -30,6 +30,7 @@ export class DesktopComponent implements OnInit {
   teacher: Array<menu> = [
     { display: "Home", route: "professor" },
     { display: "Alunos", route: "professor/alunos" }, 
+    { display: "Provas", route: "professor/provas" },
     { display: "Sair", route: "" },
   ]; 
   itens: menu[] | undefined;

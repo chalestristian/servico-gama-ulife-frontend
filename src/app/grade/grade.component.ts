@@ -17,10 +17,7 @@ export class GradeComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   loadding: boolean = true;
 
-  constructor(
-    private router: Router,
-    private httpService: HttpClientService
-    ) { }
+  constructor(private httpService: HttpClientService) { }
 
   ngOnInit(): void {   
     this.callApi();
@@ -41,16 +38,4 @@ export class GradeComponent implements OnInit {
       }
       ); 
   } 
-      
-  dataAtualFormatada(value : string){
-    var data = new Date(value),
-        dia  = data.getDate().toString().padStart(2, '0'),
-        mes  = (data.getMonth()+1).toString().padStart(2, '0'), 
-        ano  = data.getFullYear(),
-        hora = data.getHours(),
-        minutos = data.getMinutes(),
-        segundos = data.getSeconds();
-
-    return dia +"/"+ mes +"/"+ ano +"-"+ hora +":"+ minutos +":"+ segundos;
-}
 } 

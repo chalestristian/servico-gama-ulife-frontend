@@ -34,7 +34,7 @@
                         </div>
                 </div>
                 <hr> 
-                <div *ngIf="!loadding and list.length > 0">
+                <div *ngIf="loadding and listBackup.length > 0">
                         Nenhuma avaliação disponível.
                 </div>
                 <div class="row mb-5" style="padding-bottom: 80px;">
@@ -57,7 +57,7 @@
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div class="card-footer text-end bg-white">
+                                        <div class="card-footer text-end bg-white" *ngIf="role=='aluno'">
                                                 <button *ngIf="!item['hasDone']" class="btn btn-success"
                                                         (click)="route(item['nr_userevaluationid'])">Iniciar
                                                         Prova</button>

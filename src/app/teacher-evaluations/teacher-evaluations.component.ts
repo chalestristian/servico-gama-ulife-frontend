@@ -4,11 +4,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClientService } from '../services/http/http-client.service';
 
 @Component({
-  selector: 'app-evaluation',
-  templateUrl: './evaluation.component.html',
-  styleUrls: ['./evaluation.component.css']
+  selector: 'app-teacher-evaluations',
+  templateUrl: './teacher-evaluations.component.html',
+  styleUrls: ['./teacher-evaluations.component.css']
 })
-export class EvaluationComponent implements OnInit {
+export class TeacherEvaluationsComponent implements OnInit {
 
   sort: boolean = false;
   list: any = [];
@@ -34,7 +34,10 @@ export class EvaluationComponent implements OnInit {
       this.httpService.get<any[]>("Evaluation/GetEvaluationByUserId")
       .subscribe({
         error: (e) => { this.loadding = false; },
-        next: (e) => { this.list = e; this.listBackup = e; this.loadding = false; }
+        next: (e) => { 
+          this.list = e; this.listBackup = e; 
+          this.loadding = false; 
+          }
       }
       ); 
   }
