@@ -31,8 +31,7 @@ export class EvaluationComponent implements OnInit {
         error: (e) => { this.loadding = false; },
         next: (e) => { this.list = e; this.listBackup = e; this.loadding = false; }
       }
-      );
-
+      ); 
   }
 
   route(value: any) {

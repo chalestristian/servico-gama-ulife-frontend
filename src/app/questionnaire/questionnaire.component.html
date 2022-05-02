@@ -1,21 +1,22 @@
 <div class="container">
     <app-desktop [selected]="selected" [disabled]="disabled"></app-desktop>
     <div class="row content-body" style="text-align: left;">
-        <div *ngIf="!loadding"class="col-sm-12 col-md-12 p-1 ">
+        <div *ngIf="!loadding" class="col-sm-12 col-md-12 p-1 ">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
-        <div  *ngIf="loadding" class="col-sm-12 col-md-12 p-1" >
+        <div *ngIf="loadding" class="col-sm-12 col-md-12 p-1">
             <div class="border rounded questionnaire  bg-white">
                 <div class="title" *ngIf="questionnaire['nm_questionnaire'] != null">
                     Prova: {{questionnaire["nm_questionnaire"]}}
                 </div>
                 <form (ngSubmit)="submitForm()" #form="ngForm" class="qf">
-                    <mat-tab-group mat-align-tabs="center" style="min-height: 250px; max-height: 400px; overflow: auto;">
+                    <mat-tab-group mat-align-tabs="center"
+                        style="min-height: 250px; max-height: 400px; overflow: auto;">
                         <div *ngFor="let item of questionList; let i = index" class="question border rounded">
                             <mat-tab [label]="'Questão ' + (i + 1).toString()">
                                 <mat-card>
                                     <mat-card-title class="title">
-                                        {{item["ds_question"]}}
+                                        <div [outerHTML]="item['ds_question']"></div>
                                     </mat-card-title>
                                     <mat-card-content>
                                         <div *ngFor="let alternatives of item['alternatives'];" class="options">
@@ -39,17 +40,16 @@
                     </mat-tab-group>
                     <div class="col-12 buttons">
                         <!-- <input type="button" (click)="back()" class="btn btn-danger m-1" value="Voltar" /> -->
-                        <button  *ngIf="!sendLoadding" type="submit" [disabled]="!form.form.valid" class="btn btn-success m-1 sendButton" value="Enviar"  
-                            mat-raised-button
-                            matTooltip="Necessário responder todas as questões para habilitar o envio."
-                            [matTooltipDisabled]="form.valid">
+                        <button *ngIf="!sendLoadding" type="submit" [disabled]="!form.form.valid"
+                            class="btn btn-success m-1 sendButton" value="Enviar" mat-raised-button>
                             <span class="material-icons">done</span>
-                            Enviar  
-                        </button>  
-                        <button  *ngIf="sendLoadding" type="button" [disabled]="!form.form.valid" class="btn btn-success m-1 sendButton" value="loading">
+                            Finalizar
+                        </button>
+                        <button *ngIf="sendLoadding" type="button" [disabled]="!form.form.valid"
+                            class="btn btn-success m-1 sendButton" value="loading">
                             <span class="spinner-border spinner-border-sm m-1" role="status" aria-hidden="true"></span>
                             Enviando...
-                        </button>   
+                        </button>
                     </div>
                 </form>
             </div>

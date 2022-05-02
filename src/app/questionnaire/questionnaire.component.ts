@@ -39,7 +39,7 @@ export class QuestionnaireComponent implements OnInit {
     this.httpService.get<any[]>("Questionnaire/" + this.customTitle + "/QuestionList")
       .subscribe({
         error: (e) => { this.handlerError(e) },
-        next: (e) => { this.questionList = e; this.loadding = true; }
+        next: (e) => { this.questionList = e; this.loadding = true; console.log(this.questionList) }
       }
       );
   }
