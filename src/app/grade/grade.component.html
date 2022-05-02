@@ -1,5 +1,34 @@
 <div class="container">
-        <app-desktop [selected]="selected" [disabled]="false"></app-desktop>
-        <div class="container-body p-3">
+    <app-desktop [selected]="selected" [disabled]="false"></app-desktop>
+    <div class="container-body"> 
+        <div class="container">
+            <div class="card">
+                <div class="card-body" style="overflow: auto;"> 
+                    <table id="grade" datatable  [dtTrigger]="dtTrigger" [dtOptions]="dtOptions" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Professor</th>
+                                <th>Matéria</th>
+                                <th>Prova</th>
+                                <th>Data Inicial</th>
+                                <th>Data de Entrega</th>
+                                <th>Nota</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let user of evaluations">
+                                <td>{{ user.nm_user }}</td>
+                                <td>{{ user.nm_evaluation }}</td>
+                                <td>{{ user.nm_questionnaire }}</td>
+                                <td>{{dataAtualFormatada(user.dt_creationdate)}}</td>
+                                <td>{{dataAtualFormatada(user.dt_modifieddate)}}</td>
+                                <td>{{ user.dr_grade }}</td>
+                            </tr>
+                            </tbody>
+                      </table>
+                </div> 
+            </div>
         </div>
     </div>
+</div>
+<app-footer></app-footer>

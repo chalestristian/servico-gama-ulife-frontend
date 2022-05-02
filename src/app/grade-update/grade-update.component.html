@@ -4,34 +4,33 @@
   <hr>
   <form>
 
-<h1>Grade Update</h1>
-<hr>
-<form>
-    <div class="form-group">
-      <p>UserId<input type="text" [(ngModel)]="userevaluation.nr_userid" name="userid" class="form-control"></p>
-      <p>UserEvaluationId<input type="text" [(ngModel)]="userevaluation.nr_userevaluationid" name="userevaluationid"
-          class="form-control"></p>
-      <p>EvaluationId<input type="text" [(ngModel)]="userevaluation.nr_evaluationid" name="evaluationid"
-          class="form-control"></p>
-      <p>Grade<input type="text" [(ngModel)]="userevaluation.dr_grade" name="grade" class="form-control"></p>
-      <!-- Professor não precisa atualizar hasdone: <p>HasDone<input type="text"  [(ngModel)]="gradeupdate.ds_hasdone" name="hasdone"></p> -->
-      <button type="button" (click)="updateEvaluation()" class="btn btn-primary">Atualizar</button>
-    </div>
-  </form>
-</div>
-<form>
-  <select name="state" ngModel>
-    <option value="" disabled>Selecione o Aluno</option>
-    <option *ngFor="let user of users">{{user.nm_user}}</option>
+    <h1>Grade Update</h1>
+    <hr>
+    <form>
+      <div class="form-group">
+        <p>UserId<input type="text" [(ngModel)]="userevaluation.nr_userid" name="userid" class="form-control"></p>
+        <p>UserEvaluationId<input type="text" [(ngModel)]="userevaluation.nr_userevaluationid" name="userevaluationid"
+            class="form-control"></p>
+        <p>EvaluationId<input type="text" [(ngModel)]="userevaluation.nr_evaluationid" name="evaluationid"
+            class="form-control"></p>
+        <p>Grade<input type="text" [(ngModel)]="userevaluation.dr_grade" name="grade" class="form-control"></p>
+        <!-- Professor não precisa atualizar hasdone: <p>HasDone<input type="text"  [(ngModel)]="gradeupdate.ds_hasdone" name="hasdone"></p> -->
+        <button type="button" (click)="updateEvaluation()" class="btn btn-primary">Atualizar</button>
+      </div>
+    </form>
+    <form>
+      <select name="state" ngModel>
+        <option value="" disabled>Selecione o Aluno</option>
+        <option *ngFor="let user of users">{{user.nm_user}}</option>
 
-  </select>
-</form>
+      </select>
+    </form>
 
-<select [(ngModel)]="selectedOption" name="first">
-  <option *ngFor="let user of users">{{user.nm_user}}
-  </option>
-</select>
-<!-- <button (click)="print()">Click e</button> -->
+    <select [(ngModel)]="selectedOption" name="first">
+      <option *ngFor="let user of users">{{user.nm_user}}
+      </option>
+    </select>
+    <!-- <button (click)="print()">Click e</button> -->
 
 
     <select name="state" ngModel>
@@ -44,8 +43,8 @@
     <option *ngFor="let user of users">{{user.nm_user}}
     </option>
   </select>
-<p>Selected option: {{ selectedOption }}</p>
-<p>Button output: {{ printedOption }}</p>
+  <p>Selected option: {{ selectedOption }}</p>
+  <p>Button output: {{ printedOption }}</p>
 
 
 
@@ -58,18 +57,18 @@
 
 
 
-<div>
+  <div>
 
-  <h1>UserEvaluation</h1>
-  <ul *ngFor="let userevaluation of userevaluations">
-    <li>{{userevaluation.nr_userevaluationid}} - {{userevaluation.nr_userid}} - {{userevaluation.nr_evaluationid}} -
-      {{userevaluation.dr_grade}} - {{userevaluation.dt_creationdate}} - {{userevaluation.dt_modifieddate}}</li>
-  </ul>
-</div>
+    <h1>UserEvaluation</h1>
+    <ul *ngFor="let userevaluation of userevaluations">
+      <li>{{userevaluation.nr_userevaluationid}} - {{userevaluation.nr_userid}} - {{userevaluation.nr_evaluationid}} -
+        {{userevaluation.dr_grade}} - {{userevaluation.dt_creationdate}} - {{userevaluation.dt_modifieddate}}</li>
+    </ul>
+  </div>
 
-<div>
-  <h1>User</h1>
-  <ul *ngFor="let user of users">
-    <li>{{user.nr_userid}} - {{user.nr_registry}} - {{user.nm_user}} - {{user.ds_email}} - {{user.ds_usertypeid}}</li>
-  </ul>
-</div>
+  <div>
+    <h1>User</h1>
+    <ul *ngFor="let user of users">
+      <li>{{user.nr_userid}} - {{user.nr_registry}} - {{user.nm_user}} - {{user.ds_email}} - {{user.ds_usertypeid}}</li>
+    </ul>
+  </div>
