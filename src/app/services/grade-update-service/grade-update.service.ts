@@ -11,8 +11,7 @@ export class GradeUpdateService {
 
   constructor(private http: HttpClient) { }
 
-updateevaluation(grade: UserEvaluationModel): Observable<any>{
-console.log(grade)
+updateevaluation(grade: UserEvaluationModel): Observable<any>{ 
  return this.http.put(`${baseURL}UserEvaluation/PutUserEvaluation/`, grade) 
 }
 

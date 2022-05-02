@@ -14,9 +14,8 @@ export class TeacherComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange(valor: any){ 
-    console.log(valor["source"].checked);
-    console.log(valor["source"].id)
+  onChange(valor: any){  
+    
   }
 
   lista: any =[

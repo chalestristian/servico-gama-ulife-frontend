@@ -29,7 +29,7 @@ export class GradeComponent implements OnInit {
   callApi() {
     this.httpService.get<any[]>("User/UserEvaluations/")
       .subscribe({
-        error: (e) => { console.log(e) },
+        error: (e) => { },
         next: (e) => { 
           this.evaluations = e; 
           this.dtTrigger.next(e);

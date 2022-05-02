@@ -100,9 +100,7 @@ export class MatDialogComponent implements OnInit {
     return false;
   }
 
-  onEvaluationSubmit(userevaluation: any, grade :any) {
-    console.log(userevaluation);
-    console.log(this.formEvaluation);
+  onEvaluationSubmit(userevaluation: any, grade :any) { 
     this.studentListEditService.GetUserEvaluationByUserEvaluationId(userevaluation["nr_userevaluationid"]).subscribe(userevaluation => {
       this.userevaluation = userevaluation; 
       this.userevaluation["dr_grade"] = grade;
