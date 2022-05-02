@@ -9,9 +9,7 @@ import { ExampleComponent } from './example/example.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { GradeUpdateComponent } from './grade-update/grade-update.component'; 
 import { NoticeBoardComponent } from './notice-board/notice-board.component';
-import { CalendarComponent } from './calendar/calendar.component'; 
 import { LoginComponent } from './login/login.component';
 import { StudentComponent } from './student/student.component';
 import {MaterialModule} from './MaterialModule';
@@ -25,10 +23,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { TimerComponent } from './timer/timer.component';
 import { TeacherStudentsComponent } from './teacher-students/teacher-students.component';
-import { StudentListComponent } from './student-list/student-list.component'; 
 import {DataTablesModule} from 'angular-datatables';
 import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GradeUpdateComponent } from './grade-update/grade-update.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { StudentListComponent } from './student-list/student-list.component';
 
 @NgModule({
   declarations: [
